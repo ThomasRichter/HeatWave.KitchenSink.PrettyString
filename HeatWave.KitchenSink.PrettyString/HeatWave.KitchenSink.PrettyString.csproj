@@ -1,0 +1,15 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netstandard2.0</TargetFramework>
+    <AssemblyName>HeatWave.KitchenSink.PrettyString</AssemblyName>
+    <RootNamespace>HeatWave.KitchenSink.PrettyString</RootNamespace>
+    <Version>0.1.0</Version>
+    <Authors>ThomasRichter</Authors>
+    <Company>HeatWave</Company>
+    <Description>A collection of extension methods for better string representations (e.g. for TimeSpan).</Description>
+    <PackageLicenseExpression>MIT</PackageLicenseExpression>
+    <PackageId>HeatWave.KitchenSink.PrettyString</PackageId>
+  </PropertyGroup>
+
+</Project>
