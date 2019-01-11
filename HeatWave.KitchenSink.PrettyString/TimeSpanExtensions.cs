@@ -2,14 +2,14 @@
 
 namespace HeatWave.KitchenSink.PrettyString
 {
-    public static class TimeSpanExtension
+    public static class TimeSpanExtensions
     {
         private static readonly TimeSpan OneSecond = TimeSpan.FromSeconds(1);
         private static readonly TimeSpan OneHundredMillis = TimeSpan.FromMilliseconds(100);
         private static readonly TimeSpan OneMinute = TimeSpan.FromMinutes(1);
         private static readonly TimeSpan OneHour = TimeSpan.FromHours(1);
 
-        public static string AsPrettyString(this TimeSpan timeSpan)
+        public static string ToPrettyString(this TimeSpan timeSpan)
         {
             if (timeSpan > OneHour)
             {
