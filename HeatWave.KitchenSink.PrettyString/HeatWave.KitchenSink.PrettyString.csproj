@@ -12,4 +12,8 @@
     <PackageId>HeatWave.KitchenSink.PrettyString</PackageId>
   </PropertyGroup>
 
+  <ItemGroup>
+    <PackageReference Include="HeatWave.KitchenSink.ArgumentChecking" Version="0.2.0" />
+  </ItemGroup>
+
 </Project>
