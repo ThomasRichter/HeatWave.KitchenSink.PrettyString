@@ -4,14 +4,14 @@
     <TargetFramework>netstandard2.0</TargetFramework>
     <AssemblyName>HeatWave.KitchenSink.PrettyString</AssemblyName>
     <RootNamespace>HeatWave.KitchenSink.PrettyString</RootNamespace>
-    <Version>0.2.0</Version>
-    <Authors>ThomasRichter</Authors>
-    <projectUrl>https://github.com/ThomasRichter/HeatWave.KitchenSink.PrettyString</projectUrl>
-    <Company>HeatWave</Company>
+    <Version>0.2.1</Version>
     <Summary>A collection of extension methods for better string representations (e.g. IEnumerable and specializations for IList, ISet and IDictionary, TimeSpan).</Summary>
     <Description>A collection of extension methods for better string representations (e.g. IEnumerable and specializations for IList, ISet and IDictionary, TimeSpan).</Description>
+    <projectUrl>https://github.com/ThomasRichter/HeatWave.KitchenSink.PrettyString</projectUrl>
+    <Authors>ThomasRichter</Authors>
+    <Company>HeatWave</Company>
     <PackageLicenseExpression>MIT</PackageLicenseExpression>
-    <PackageId>HeatWave.KitchenSink.PrettyString</PackageId>
+    <GenerateDocumentationFile>true</GenerateDocumentationFile>
     <tags>tostring string format formatting ienumerable ilist iset idictionary</tags>
   </PropertyGroup>
 
