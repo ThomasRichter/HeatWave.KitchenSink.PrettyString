@@ -5,6 +5,10 @@ using System.Text;
 
 namespace HeatWave.KitchenSink.PrettyString
 {
+    /// <summary>
+    /// This class contains the extension methods for <see cref="IEnumerable{T}"/>
+    /// and specializations for <see cref="ISet{T}"/> and <see cref="IDictionary{TKey, TValue}"/>.
+    /// </summary>
     public static class IEnumerableExtensions
     {
         /// <summary>
@@ -29,7 +33,6 @@ namespace HeatWave.KitchenSink.PrettyString
         /// accepts KeyValuePairs. If the enumerable is a <see cref="IDictionary{TKey, TValue}"/>, 
         /// the format { a: 1; b: 2; } is used. Otherwise returns a string with the format [ first, ..., last ].
         /// </summary>
-        /// <typeparam name="T"></typeparam>
         /// <param name="enumerable">Not null.</param>
         /// <returns>Returns a string with the dictionary format if the <paramref name="enumerable"/> is a dictionary, otherwise [ first, ..., last ].</returns>
         public static string ToPrettyString<TKey, TValue>(this IEnumerable<KeyValuePair<TKey, TValue>> enumerable)
