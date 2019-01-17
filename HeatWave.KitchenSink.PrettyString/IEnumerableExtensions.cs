@@ -15,7 +15,7 @@ namespace HeatWave.KitchenSink.PrettyString
     /// <see cref="ISet{T}"/>: Default-Format = { first, ..., last }
     /// <para/>
     /// 
-    /// <see cref="IDictionary{TKey, TValue}"/>: Default-Format = { a: 1; b: 2 }
+    /// <see cref="IDictionary{TKey, TValue}"/>: Default-Format = { a: 1, b: 2 }
     /// </summary>
     public static class IEnumerableExtensions
     {
@@ -39,7 +39,7 @@ namespace HeatWave.KitchenSink.PrettyString
         /// <summary>
         /// A specialized version of <see cref="ToPrettyString{T}(IEnumerable{T})"/> that
         /// accepts KeyValuePairs. If the enumerable is a <see cref="IDictionary{TKey, TValue}"/>, 
-        /// the format { a: 1; b: 2 } is used. Otherwise returns a string with the format [ first, ..., last ].
+        /// the format { a: 1, b: 2 } is used. Otherwise returns a string with the format [ first, ..., last ].
         /// </summary>
         /// <param name="enumerable">The source of the elements to be printed. May not be null.</param>
         /// <returns>Returns a string with the dictionary format if the <paramref name="enumerable"/> is a dictionary, otherwise [ first, ..., last ].</returns>
@@ -107,14 +107,14 @@ namespace HeatWave.KitchenSink.PrettyString
         public static string ToPrettyString<T>(this ISet<T> set) => set.ToPrettyString("{", ", ", "}");
 
         /// <summary>
-        /// Returns a string with the format { a: 1; b: 2 }.
+        /// Returns a string with the format { a: 1, b: 2 }.
         /// </summary>
         /// <param name="dictionary">The source of the elements to be printed. May not be null.</param>
-        /// <returns>Returns a string with the format { a: 1; b: 2 }.</returns>
-        public static string ToPrettyString<TKey, TValue>(this IDictionary<TKey, TValue> dictionary) => dictionary.ToPrettyString("{", ": ", "; ", "}");
+        /// <returns>Returns a string with the format { a: 1, b: 2 }.</returns>
+        public static string ToPrettyString<TKey, TValue>(this IDictionary<TKey, TValue> dictionary) => dictionary.ToPrettyString("{", ": ", ", ", "}");
 
         /// <summary>
-        /// Example: { a: 1; b: 2 } is produced by before = "{", keyValueJoiner = ": ", pairSeparator = "; ", after = "}".
+        /// Example: { a: 1, b: 2 } is produced by before = "{", keyValueJoiner = ": ", pairSeparator = ", ", after = "}".
         /// <para />
         /// No arguments passed to this method may be null.
         /// </summary>

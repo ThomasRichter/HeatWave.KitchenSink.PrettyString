@@ -72,7 +72,7 @@ public class IEnumerableExtensionsTests
                 { 3, "three" }
             };
 
-        Assert.That(dict.ToPrettyString(), Is.EqualTo("{ 1: one; 2: two; 3: three }"));
+        Assert.That(dict.ToPrettyString(), Is.EqualTo("{ 1: one, 2: two, 3: three }"));
     }
 
     [Test]
@@ -92,7 +92,7 @@ public class IEnumerableExtensionsTests
                 { 3, "three" }
             };
 
-        Assert.That(dictAsEnumerable.ToPrettyString(), Is.EqualTo("{ 1: one; 2: two; 3: three }"));
+        Assert.That(dictAsEnumerable.ToPrettyString(), Is.EqualTo("{ 1: one, 2: two, 3: three }"));
     }
 
     [Test]
