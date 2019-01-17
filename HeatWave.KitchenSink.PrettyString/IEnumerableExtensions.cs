@@ -6,8 +6,16 @@ using System.Text;
 namespace HeatWave.KitchenSink.PrettyString
 {
     /// <summary>
-    /// This class contains the extension methods for <see cref="IEnumerable{T}"/>
-    /// and specializations for <see cref="ISet{T}"/> and <see cref="IDictionary{TKey, TValue}"/>.
+    /// This class contains the extension methods for:
+    /// <para/>
+    /// 
+    /// <see cref="IEnumerable{T}"/>: Default-Format =[ first, ..., last ]
+    /// <para/>
+    /// 
+    /// <see cref="ISet{T}"/>: Default-Format = { first, ..., last }
+    /// <para/>
+    /// 
+    /// <see cref="IDictionary{TKey, TValue}"/>: Default-Format = { a: 1; b: 2 }
     /// </summary>
     public static class IEnumerableExtensions
     {
@@ -16,7 +24,7 @@ namespace HeatWave.KitchenSink.PrettyString
         /// If the <paramref name="enumerable"/> is a <see cref="ISet{T}"/>, the format { first, ..., last } is used.
         /// </summary>
         /// <typeparam name="T"></typeparam>
-        /// <param name="enumerable">Not null.</param>
+        /// <param name="enumerable">The source of the elements to be printed. May not be null.</param>
         /// <returns>Returns a string with the format [ first, ..., last ].</returns>
         public static string ToPrettyString<T>(this IEnumerable<T> enumerable)
         {
@@ -31,9 +39,9 @@ namespace HeatWave.KitchenSink.PrettyString
         /// <summary>
         /// A specialized version of <see cref="ToPrettyString{T}(IEnumerable{T})"/> that
         /// accepts KeyValuePairs. If the enumerable is a <see cref="IDictionary{TKey, TValue}"/>, 
-        /// the format { a: 1; b: 2; } is used. Otherwise returns a string with the format [ first, ..., last ].
+        /// the format { a: 1; b: 2 } is used. Otherwise returns a string with the format [ first, ..., last ].
         /// </summary>
-        /// <param name="enumerable">Not null.</param>
+        /// <param name="enumerable">The source of the elements to be printed. May not be null.</param>
         /// <returns>Returns a string with the dictionary format if the <paramref name="enumerable"/> is a dictionary, otherwise [ first, ..., last ].</returns>
         public static string ToPrettyString<TKey, TValue>(this IEnumerable<KeyValuePair<TKey, TValue>> enumerable)
         {
@@ -46,13 +54,14 @@ namespace HeatWave.KitchenSink.PrettyString
         }
 
         /// <summary>
-        /// 
+        /// Example: [ a, b, c ] is produced by before = "[", separator = ", ", after = "]".
+        /// <para />
+        /// No arguments passed to this method may be null.
         /// </summary>
-        /// <typeparam name="T"></typeparam>
-        /// <param name="enumerable">Not null.</param>
-        /// <param name="before"></param>
-        /// <param name="separator"></param>
-        /// <param name="after"></param>
+        /// <param name="enumerable">The source of the elements to be printed. May not be null.</param>
+        /// <param name="before">The prefix of the returned string. Must be non-null.</param>
+        /// <param name="separator">The separator between elements. Must be non-null.</param>
+        /// <param name="after">The postfix of the returned string. Must be non-null.</param>
         /// <returns></returns>
         public static string ToPrettyString<T>(this IEnumerable<T> enumerable, string before, string separator, string after)
         {
@@ -90,11 +99,31 @@ namespace HeatWave.KitchenSink.PrettyString
                 .ToString();
         }
 
+        /// <summary>
+        /// Returns a string with the format { first, ..., last }.
+        /// </summary>
+        /// <param name="set">The source of the elements to be printed. May not be null.</param>
+        /// <returns>Returns a string with the format { first, ..., last }.</returns>
         public static string ToPrettyString<T>(this ISet<T> set) => set.ToPrettyString("{", ", ", "}");
 
+        /// <summary>
+        /// Returns a string with the format { a: 1; b: 2 }.
+        /// </summary>
+        /// <param name="dictionary">The source of the elements to be printed. May not be null.</param>
+        /// <returns>Returns a string with the format { a: 1; b: 2 }.</returns>
         public static string ToPrettyString<TKey, TValue>(this IDictionary<TKey, TValue> dictionary) => dictionary.ToPrettyString("{", ": ", "; ", "}");
 
-
+        /// <summary>
+        /// Example: { a: 1; b: 2 } is produced by before = "{", keyValueJoiner = ": ", pairSeparator = "; ", after = "}".
+        /// <para />
+        /// No arguments passed to this method may be null.
+        /// </summary>
+        /// <param name="dictionary">The source of the elements to be printed. May not be null.</param>
+        /// <param name="before">The prefix of the returned string. Must be non-null.</param>
+        /// <param name="keyValueJoiner">The string that is placed between key and value of a key value pair. Must be non-null.</param>
+        /// <param name="pairSeparator">The separator between key value pairs. Must be non-null.</param>
+        /// <param name="after">The postfix of the returned string. Must be non-null.</param>
+        /// <returns></returns>
         public static string ToPrettyString<TKey, TValue>(
             this IDictionary<TKey, TValue> dictionary, 
             string before, 

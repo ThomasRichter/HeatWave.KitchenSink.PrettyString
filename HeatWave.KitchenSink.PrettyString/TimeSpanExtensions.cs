@@ -2,6 +2,10 @@
 
 namespace HeatWave.KitchenSink.PrettyString
 {
+    /// <summary>
+    ///  This static class contains the extension method <see cref="ToPrettyString(TimeSpan)"/> for
+    ///  displaying <see cref="TimeSpan"/> instances with an appropriate unit.
+    /// </summary>
     public static class TimeSpanExtensions
     {
         private static readonly TimeSpan OneHour = TimeSpan.FromHours(1);
