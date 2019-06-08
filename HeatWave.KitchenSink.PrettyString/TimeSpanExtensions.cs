@@ -10,7 +10,10 @@ namespace HeatWave.KitchenSink.PrettyString
     {
         private static readonly TimeSpan OneHour = TimeSpan.FromHours(1);
         private static readonly TimeSpan OneMinute = TimeSpan.FromMinutes(1);
+
+        private static readonly TimeSpan TenSeconds = TimeSpan.FromSeconds(10);
         private static readonly TimeSpan OneSecond = TimeSpan.FromSeconds(1);
+
         private static readonly TimeSpan OneHundredMillis = TimeSpan.FromMilliseconds(100);
         private static readonly TimeSpan TenMillis = TimeSpan.FromMilliseconds(10);
 
@@ -46,7 +49,13 @@ namespace HeatWave.KitchenSink.PrettyString
                 return $"{timeSpan.TotalMilliseconds:0} millis";           
             }
 
-            // '1 second' through '59.9 seconds'
+            // '1 second' through '9.99 seconds'
+            if (absTimeSpan < TenSeconds)
+            {
+                return $"{timeSpan.TotalSeconds:0.##} {(RoundsToSingleSecond(absTimeSpan) ? "second" : "seconds")}";
+            }
+
+            // '10 seconds' through '59.9 seconds'
             if (absTimeSpan < OneMinute)
             {
                 return $"{timeSpan.TotalSeconds:0.#} {(RoundsToSingleSecond(absTimeSpan) ? "second" : "seconds")}";
@@ -71,7 +80,7 @@ namespace HeatWave.KitchenSink.PrettyString
 
         private static bool RoundsToSingleMilli(TimeSpan timeSpan) => timeSpan >= MillisLowerInclusiveRoundingBound && timeSpan < MillisUpperExclusiveRoundingBound;
 
-        private static readonly TimeSpan SecondsUpperExclusiveRoundingBound = TimeSpan.FromMilliseconds(1500);
+        private static readonly TimeSpan SecondsUpperExclusiveRoundingBound = TimeSpan.FromMilliseconds(1004);
 
         private static bool RoundsToSingleSecond(TimeSpan timeSpan) => timeSpan < SecondsUpperExclusiveRoundingBound;
     }

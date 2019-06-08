@@ -35,6 +35,21 @@ public class TimeSpanExtensionsTests
     public void When_1S_Then_1Second() => Assert.That(TimeSpan.FromSeconds(1).ToPrettyString(), Is.EqualTo("1 second"));
 
     [Test]
+    public void When_1_01S_Then_1_1Seconds() => Assert.That(FromMillisPrecise(1010).ToPrettyString(), Is.EqualTo("1.01 seconds"));
+
+    [Test]
+    public void When_9_994S_Then_9_99Seconds() => Assert.That(FromMillisPrecise(9994).ToPrettyString(), Is.EqualTo("9.99 seconds"));
+
+    [Test]
+    public void When_9_995S_Then_10Seconds() => Assert.That(FromMillisPrecise(9995).ToPrettyString(), Is.EqualTo("10 seconds"));
+
+    [Test]
+    public void When_10_04S_Then_10Seconds() => Assert.That(FromMillisPrecise(10040).ToPrettyString(), Is.EqualTo("10 seconds"));
+
+    [Test]
+    public void When_10_05S_Then_10Seconds() => Assert.That(FromMillisPrecise(10050).ToPrettyString(), Is.EqualTo("10.1 seconds"));
+
+    [Test]
     public void When_59_9S_Then_59_9_Seconds() => Assert.That(TimeSpan.FromSeconds(59.9).ToPrettyString(), Is.EqualTo("59.9 seconds"));
 
     [Test]
